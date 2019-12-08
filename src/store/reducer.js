@@ -1,3 +1,9 @@
 import { combineReducers } from 'redux'
 
-export default combineReducers({})
+const selectedViewReducer = () => {
+  return "Temporary View Reducer"
+}
+
+export default combineReducers({
+  selectedView: selectedViewReducer
+})

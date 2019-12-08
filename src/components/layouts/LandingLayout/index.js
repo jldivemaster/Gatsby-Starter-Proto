@@ -1,4 +1,4 @@
-import React, { useState, memo } from 'react'
+import React, { useState, memo, setState } from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import { Layout, Menu, Icon, Typography } from 'antd'
@@ -6,6 +6,13 @@ import { ReactComponent as LogoIcon } from '@static/logo.svg'
 
 const LandingLayout = ({ children }) => {
   const [collapsed, toggle] = useState(true)
+  const [view, setView] = useState(1)
+
+  const handleClick = (e) => {
+    console.log(e.key)
+    setView(e.key)
+  }
+
   return (
     <div className='landing-layout'>
       <Layout>
@@ -31,18 +38,23 @@ const LandingLayout = ({ children }) => {
             mode='inline'
             defaultSelectedKeys={['1']}
             className='border-0'
+            onClick={(e) => handleClick(e)}
           >
             <Menu.Item key='1'>
-              <Icon type='user' />
-              <span>nav 1</span>
+              <Icon type='video-camera' />
+              <span>Home</span>
             </Menu.Item>
             <Menu.Item key='2'>
-              <Icon type='video-camera' />
-              <span>nav 2</span>
+              <Icon type='user' />
+              <span>Room 1</span>
             </Menu.Item>
             <Menu.Item key='3'>
+              <Icon type='user' />
+              <span>Room 2</span>
+            </Menu.Item>
+            <Menu.Item key='4'>
               <Icon type='upload' />
-              <span>nav 3</span>
+              <span>Map</span>
             </Menu.Item>
           </Menu>
         </Layout.Sider>
